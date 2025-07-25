@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kedi-Köpek Sınıflandırıcı</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-paw"></i>
+                    <h1>Kedi-Köpek Sınıflandırıcı</h1>
+                </div>
+                <p class="subtitle">AI ile kedi ve köpek fotoğraflarını sınıflandırın</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>Fotoğraf Yükleyin</h3>
+                        <p>Kedi veya köpek fotoğrafını sürükleyip bırakın veya tıklayarak seçin</p>
+                        <button class="btn btn-primary" id="selectBtn">
+                            <i class="fas fa-folder-open"></i>
+                            Dosya Seç
+                        </button>
+                    </div>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <div class="image-preview">
+                    <img id="previewImage" src="" alt="Önizleme">
+                    <div class="image-overlay">
+                        <button class="btn btn-secondary btn-sm" id="changeImageBtn">
+                            <i class="fas fa-sync-alt"></i>
+                            Değiştir
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Section -->
+            <div class="action-section" id="actionSection" style="display: none;">
+                <button class="btn btn-success btn-lg" id="predictBtn">
+                    <i class="fas fa-brain"></i>
+                    <span id="predictBtnText">Analiz Et</span>
+                </button>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="result-card">
+                    <div class="result-icon" id="resultIcon">
+                        <i class="fas fa-question"></i>
+                    </div>
+                    <div class="result-content">
+                        <h3 id="resultTitle">Sonuç</h3>
+                        <p class="result-text" id="resultText"></p>
+                        <div class="confidence-bar">
+                            <div class="confidence-label">Güven Oranı</div>
+                            <div class="confidence-progress">
+                                <div class="confidence-fill" id="confidenceFill"></div>
+                            </div>
+                            <div class="confidence-percentage" id="confidencePercentage">0%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Section -->
+            <div class="error-section" id="errorSection" style="display: none;">
+                <div class="error-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Hata!</h3>
+                    <p id="errorMessage"></p>
+                    <button class="btn btn-primary" id="retryBtn">
+                        <i class="fas fa-redo"></i>
+                        Tekrar Dene
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Kedi-Köpek Sınıflandırıcı. AI ile güçlendirilmiştir.</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>Analiz Ediliyor...</h3>
+            <p>AI modeliniz fotoğrafı inceliyor</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
